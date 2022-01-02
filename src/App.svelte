@@ -5,7 +5,7 @@
 </script>
 
 <FixedBar/>
-
+<List/>
 
 
 <style global lang="scss">

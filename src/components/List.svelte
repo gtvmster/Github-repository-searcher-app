@@ -2,9 +2,10 @@
 	import {onMount} from "svelte";
   import {MDCList} from '@material/list';
   import {MDCRipple} from '@material/ripple';
+  import { data } from './Store.svelte'
   import Request from './Request.svelte'
   
-  repos = data;
+  $: repos = $data;
   
 onMount(()=> {
   const list = new MDCList(document.querySelector('.mdc-list'));
@@ -12,10 +13,13 @@ onMount(()=> {
   });
 </script>
 
-<ul>
-  {#if repos.length > 0}
+<ul class="mdc-list">
+  {#if repos}
 		{#each repos as repo}
-			<li>{repo.name}</li>
+    <li class="mdc-list-item" tabindex="0">
+      <span class="mdc-list-item__ripple"></span>
+      <span class="mdc-list-item__text">{repo.name}</span>
+    </li>
 		{/each}
   {/if}  
 </ul>
